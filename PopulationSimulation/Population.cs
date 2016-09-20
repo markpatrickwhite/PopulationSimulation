@@ -20,6 +20,10 @@ namespace PopulationSimulation
 
         public Population()
         {
+            People = new List<Person>();
+            Random = new Random();
+            Report = new Dictionary<int, IReportEntry>();
+            Logs = new List<Log>();
         }
 
         public Random Random { get; set; }
@@ -28,7 +32,14 @@ namespace PopulationSimulation
         public IList<Log> Logs { get; set; }
 
         public int Count => People.Count;
-        public int GetCountByGenderType(GenderType g) { return People.Count(p => p.Gender == g); }
+
+        public int GetCountByGenderType(GenderType g)
+        {
+            var peopleOfGender = People.Where(p => p.Gender == g);
+            if (peopleOfGender == null) { return 0;}
+            return peopleOfGender.Count();
+        }
+
         public int GetCountByAgeType(AgeType a) { return People.Count(p => p.AgeType == a); }
         public void AddPerson(Person p) { People.Add(p); }
 
@@ -48,6 +59,16 @@ namespace PopulationSimulation
 
         public void Process(int month)
         {
+            var peopleToProcess = People.ToList();
+            var newCount = peopleToProcess.Count;
+            var originalCount = People.Count;
+
+            peopleToProcess.Add(new Person());
+
+            newCount = peopleToProcess.Count;
+            originalCount = People.Count;
+
+
             var newMothers = new Stack<Person>();
             var deadPeople = new List<Person>();
             var newSpouses = new Dictionary<Person, Person>();
