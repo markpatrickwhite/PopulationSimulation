@@ -27,7 +27,7 @@ namespace PopulationSimulation
         public Dictionary<int, IReportEntry> Report { get; set; }
         public IList<Log> Logs { get; set; }
 
-        public int Count => People.Count;
+        public int Count { get {return this.People.Count; } }
         public int GetCountByGenderType(GenderType g) { return People.Count(p => p.Gender == g); }
         public int GetCountByAgeType(AgeType a) { return People.Count(p => p.AgeType == a); }
         public void AddPerson(Person p) { People.Add(p); }
