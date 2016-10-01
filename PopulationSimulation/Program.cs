@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using PopulationSimulation.Builders;
+using PopulationSimulation.Classes;
+using PopulationSimulation.Interfaces;
 
 namespace PopulationSimulation
 {

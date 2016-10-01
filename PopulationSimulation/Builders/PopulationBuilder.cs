@@ -1,9 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using PopulationSimulation.Classes;
+using PopulationSimulation.Interfaces;
 
-namespace PopulationSimulation
+namespace PopulationSimulation.Builders
 {
-    public class PopulationBuilder
+    public class PopulationBuilder : IPopulationBuilder
     {
         private readonly Population _population;
         public PopulationBuilder()
