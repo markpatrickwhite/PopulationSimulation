@@ -15,24 +15,17 @@
             return this;
         }
 
-        public ReportEntryBuilder AddManCount(int men)
+        public ReportEntryBuilder AddPopulation(IPopulation population)
         {
-            if (men >= 0)
-            {
-                _reportEntry.ManCount = men;
-                _reportEntry.Count += men;
-            }
+            _reportEntry.Count = population.Count;
+            _reportEntry.ManCount = population.GetCountByGenderType(GenderType.Male);
+            _reportEntry.WomanCount = population.GetCountByGenderType(GenderType.Female);
+            _reportEntry.ChildCount = population.GetCountByAgeType(AgeType.Child);
+            _reportEntry.AdultCount = population.GetCountByAgeType(AgeType.Adult);
+            _reportEntry.SeniorCount = population.GetCountByAgeType(AgeType.Senior);
             return this;
         }
-        public ReportEntryBuilder AddWomanCount(int women)
-        {
-            if (women >= 0)
-            {
-                _reportEntry.WomanCount = women;
-                _reportEntry.Count += women;
-            }
-            return this;
-        }
+
         public ReportEntryBuilder AddBirths(int births)
         {
             if (births >= 0) { _reportEntry.Births = births; }
@@ -49,31 +42,15 @@
             return this;
         }
 
-        public ReportEntryBuilder AddChildren(int children)
-        {
-            if (children >= 0) { _reportEntry.ChildCount = children; }
-            return this;
-        }
-        public ReportEntryBuilder AddAdults(int adults)
-        {
-            if (adults >= 0) { _reportEntry.AdultCount = adults; }
-            return this;
-        }
-        public ReportEntryBuilder AddSeniors(int seniors)
-        {
-            if (seniors >= 0) { _reportEntry.SeniorCount = seniors; }
-            return this;
-        }
-
         public ReportEntry Build()
         {
             var totalMenAndWomen = _reportEntry.ManCount + _reportEntry.WomanCount;
             var totalAgeGroups = _reportEntry.ChildCount +
                                  _reportEntry.AdultCount +
                                  _reportEntry.SeniorCount;
-            var isCountsMatch = (totalAgeGroups != totalMenAndWomen ||
-                                 totalMenAndWomen != _reportEntry.Count);
-            return isCountsMatch ? new ReportEntry() : _reportEntry;
+            var isCountsMatch = (totalAgeGroups == totalMenAndWomen &&
+                                 totalMenAndWomen == _reportEntry.Count);
+            return isCountsMatch ? _reportEntry : new ReportEntry();
         }
     }
 }

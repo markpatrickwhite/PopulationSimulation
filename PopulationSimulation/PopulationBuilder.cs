@@ -32,24 +32,6 @@ namespace PopulationSimulation
             return this;
         }
 
-        public PopulationBuilder AddReports(Dictionary<int, IReportEntry> reports)
-        {
-            _population.Report = reports;
-            return this;
-        }
-
-        public PopulationBuilder AddLogs(IList<Log> logs)
-        {
-            _population.Logs = logs;
-            return this;
-        }
-
-        public PopulationBuilder AddRandomNumberGenerator(Random random)
-        {
-            _population.Random = random;
-            return this;
-        }
-
         public Population Build()
         {
             return _population;
