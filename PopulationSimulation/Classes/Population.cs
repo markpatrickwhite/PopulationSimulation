@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using PopulationSimulation.Interfaces;
 
-namespace PopulationSimulation
+namespace PopulationSimulation.Classes
 {
     public class Population : IPopulation
     {

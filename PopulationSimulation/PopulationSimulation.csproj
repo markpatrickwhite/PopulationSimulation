@@ -44,27 +44,36 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AgeType.cs" />
+    <Compile Include="Classes\Couple.cs" />
     <Compile Include="GenderType.cs" />
-    <Compile Include="IPerson.cs" />
-    <Compile Include="IPopulation.cs" />
-    <Compile Include="IReportEntry.cs" />
-    <Compile Include="IReportEntryBuilder.cs" />
-    <Compile Include="Log.cs" />
-    <Compile Include="Odds.cs" />
-    <Compile Include="Person.cs" />
-    <Compile Include="Population.cs" />
-    <Compile Include="SimulatorBuilder.cs" />
-    <Compile Include="PopulationBuilder.cs" />
+    <Compile Include="Interfaces\ICouple.cs" />
+    <Compile Include="Interfaces\ILog.cs" />
+    <Compile Include="Interfaces\IOdds.cs" />
+    <Compile Include="Interfaces\IPerson.cs" />
+    <Compile Include="Interfaces\IPopulation.cs" />
+    <Compile Include="Interfaces\IReportEntry.cs" />
+    <Compile Include="Interfaces\IReportEntryBuilder.cs" />
+    <Compile Include="Interfaces\IPopulationBuilder.cs" />
+    <Compile Include="Classes\Log.cs" />
+    <Compile Include="Classes\Odds.cs" />
+    <Compile Include="Classes\Person.cs" />
+    <Compile Include="Classes\Population.cs" />
+    <Compile Include="Interfaces\ISimulator.cs" />
+    <Compile Include="Interfaces\ISimulatorBuilder.cs" />
+    <Compile Include="ProcessSimulatedMonthResponse.cs" />
+    <Compile Include="Builders\SimulatorBuilder.cs" />
+    <Compile Include="Builders\PopulationBuilder.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ReportEntryBuilder.cs" />
-    <Compile Include="ReportEntry.cs" />
-    <Compile Include="Simulator.cs" />
+    <Compile Include="Builders\ReportEntryBuilder.cs" />
+    <Compile Include="Classes\ReportEntry.cs" />
+    <Compile Include="Classes\Simulator.cs" />
     <Compile Include="Util.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

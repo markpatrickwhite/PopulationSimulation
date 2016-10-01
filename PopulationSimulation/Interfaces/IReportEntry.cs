@@ -1,4 +1,4 @@
-﻿namespace PopulationSimulation
+﻿namespace PopulationSimulation.Interfaces
 {
     public interface IReportEntry
     {

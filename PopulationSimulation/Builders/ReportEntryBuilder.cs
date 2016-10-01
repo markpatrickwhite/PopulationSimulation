@@ -1,4 +1,7 @@
-﻿namespace PopulationSimulation
+﻿using PopulationSimulation.Classes;
+using PopulationSimulation.Interfaces;
+
+namespace PopulationSimulation.Builders
 {
     public class ReportEntryBuilder : IReportEntryBuilder
     {

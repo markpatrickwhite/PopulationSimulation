@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
+using PopulationSimulation.Classes;
 
-namespace PopulationSimulation
+namespace PopulationSimulation.Interfaces
 {
     public interface IPopulation
     {

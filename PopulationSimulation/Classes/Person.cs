@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Linq;
+using PopulationSimulation.Interfaces;
 
-namespace PopulationSimulation
+namespace PopulationSimulation.Classes
 {
     public class Person : IPerson
     {
@@ -83,7 +84,7 @@ namespace PopulationSimulation
             }
         }
         public int Age { get; set; }
-        public string Name { get { return string.Format("{0} {1}", FirstName, LastName); } }
+        public string Name => $"{FirstName} {LastName}";
         public string FirstName { get; set; }
         public string LastName { get; set; }
 
@@ -94,6 +95,13 @@ namespace PopulationSimulation
         public Person Spouse { get; set; }
         public Person BirthFather { get; set; }
         public Person BirthMother { get; set; }
+
+        public bool IsAdult => AgeType == AgeType.Adult;
+        public bool IsUnmarried => Spouse == null;
+        public bool IsMarried => Spouse != null;
+
+        public bool IsMale => Gender == GenderType.Male;
+        public bool IsFemale => Gender == GenderType.Female;
 
         private string GenerateRandomFirstName(GenderType g)
         {

@@ -1,6 +1,8 @@
-namespace PopulationSimulation
+using PopulationSimulation.Interfaces;
+
+namespace PopulationSimulation.Classes
 {
-    public class Log
+    public class Log : ILog
     {
         public Log(int m, string t)
         {
