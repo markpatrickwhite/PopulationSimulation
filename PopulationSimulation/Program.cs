@@ -63,22 +63,29 @@ namespace PopulationSimulation
             foreach (var item in p.Report)
             {
                 var r = item.Value;
-                string reportOutput =
-                    $"{r.Month}\t{r.Count}\t{r.ManCount}\t{r.WomanCount}\t{r.Births}\t{r.Deaths}\t{r.Marriages}\t{r.ChildCount}\t{r.AdultCount}\t{r.SeniorCount}";
+                var reportOutput =
+                    string.Format("{0}\t{1}\t{2}\t{3}\t{4}\t{5}\t{6}\t{7}\t{8}\t{9}", 
+                    r.Month, r.Count, r.ManCount, r.WomanCount, r.Births, r.Deaths, r.Marriages, r.ChildCount, r.AdultCount, r.SeniorCount);
+                //string reportOutput =
+                //    $"{r.Month}\t{r.Count}\t{r.ManCount}\t{r.WomanCount}\t{r.Births}\t{r.Deaths}\t{r.Marriages}\t{r.ChildCount}\t{r.AdultCount}\t{r.SeniorCount}";
                 WriteToOutput(fw, reportOutput);
             }
 
             WriteToOutput(fw, "");
             WriteToOutput(fw, "Age Breakdown::");
             WriteToOutput(fw, "--------------------------");
-            WriteToOutput(fw, $"Children: \t{p.GetCountByAgeType(AgeType.Child)}");
-            WriteToOutput(fw, $"Adults: \t{p.GetCountByAgeType(AgeType.Adult)}");
-            WriteToOutput(fw, $"Seniors: \t{p.GetCountByAgeType(AgeType.Senior)}");
+            WriteToOutput(fw, string.Format("Children: \t{0}", p.GetCountByAgeType(AgeType.Child)));
+            WriteToOutput(fw, string.Format("Adults: \t{0}", p.GetCountByAgeType(AgeType.Adult)));
+            WriteToOutput(fw, string.Format("Seniors: \t{0}",p.GetCountByAgeType(AgeType.Senior)));
+            //WriteToOutput(fw, $"Children: \t{p.GetCountByAgeType(AgeType.Child)}"); // C#6
+            //WriteToOutput(fw, $"Adults: \t{p.GetCountByAgeType(AgeType.Adult)}"); // C#6
+            //WriteToOutput(fw, $"Seniors: \t{p.GetCountByAgeType(AgeType.Senior)}"); // C#6
 
             WriteToOutput(fw, "");
             WriteToOutput(fw, "Event Log::");
             WriteToOutput(fw, "--------------------------");
-            foreach (var log in p.Logs) { WriteToOutput(fw, $"Month {log.Month}: {log.Text}"); }
+            foreach (var log in p.Logs) { WriteToOutput(fw, string.Format("Month {0}: {1}", log.Month, log.Text)); }
+            //foreach (var log in p.Logs) { WriteToOutput(fw, $"Month {log.Month}: {log.Text}"); } //C#6
 
             WriteToOutput(fw, "");
             WriteToOutput(fw, "_people::");
@@ -91,7 +98,11 @@ namespace PopulationSimulation
                 var fatherName = person.BirthFather != null ? person.BirthFather.Name : "Unknown";
                 var motherName = person.BirthMother != null ? person.BirthMother.Name : "Unknown";
                 WriteToOutput(fw,
-                    $"{person.FirstName}|{person.LastName}|{personGender}|{person.AgeType}|{person.Age / 12}|{spouseInfo}|{fatherName}|{motherName}");
+                    string.Format("{0}|{1}|{2}|{3}|{4}|{5}|{6}|{7}",
+                    person.FirstName, person.LastName, personGender, person.AgeType, person.Age / 12, spouseInfo, fatherName, motherName
+                    ));
+                //WriteToOutput(fw,
+                //    $"{person.FirstName}|{person.LastName}|{personGender}|{person.AgeType}|{person.Age / 12}|{spouseInfo}|{fatherName}|{motherName}"); //C#6
             }
 
             WriteToOutput(fw, "-------------------------- /END");

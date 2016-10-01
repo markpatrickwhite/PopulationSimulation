@@ -92,7 +92,8 @@ namespace PopulationSimulation
                 {
                     person.IsAlive = false;
                     deadPeople.Add(person);
-                    Logs.Add(new Log(month, $"Let us please mourn the passing of {person.Name}."));
+                    Logs.Add(new Log(month, string.Format("Let us please mourn the passing of {0}.", person.Name)));
+                    //Logs.Add(new Log(month, $"Let us please mourn the passing of {person.Name}.")); //C#6
                 }
 
 
@@ -116,7 +117,9 @@ namespace PopulationSimulation
                             unmarried.Remove(person);
                             unmarried.Remove(spouseCandidate);
                             Logs.Add(new Log(month,
-                                $"Congratulations to newlyweds {person.Name} and {spouseCandidate.Name}."));
+                                string.Format("Congratulations to newlyweds {0} and {1}.", person.Name, spouseCandidate.Name)));
+                            //Logs.Add(new Log(month,
+                            //    $"Congratulations to newlyweds {person.Name} and {spouseCandidate.Name}.")); // c#6
                             break;
                         }
                     }
@@ -140,7 +143,8 @@ namespace PopulationSimulation
                 else if (!person.IsPregnant && isMarried && isChildBearingAge && Random.Next(0, 100) < 3)
                 {
                     person.IsPregnant = true;
-                    Logs.Add(new Log(month, $"{person.Name} became pregnant."));
+                    Logs.Add(new Log(month, string.Format("{0} became pregnant.", person.Name)));
+                    //Logs.Add(new Log(month, $"{person.Name} became pregnant.")); //C#6
                 }
             }
 
@@ -152,7 +156,9 @@ namespace PopulationSimulation
                 var newborn = Random.Next(0, 2) != 0 ? new Person(GenderType.Female, 0, mother, mother.Spouse) : new Person(GenderType.Male, 0, mother, mother.Spouse);
                 People.Add(newborn);
                 Logs.Add(new Log(month,
-                    $"Congratulations to {mother.Name} and {mother.Spouse.Name} on their new baby: {newborn.Name}."));
+                    string.Format("Congratulations to {0} and {1} on their new baby: {2}.", mother.Name, mother.Spouse.Name, newborn.Name)));
+                //Logs.Add(new Log(month,
+                //    $"Congratulations to {mother.Name} and {mother.Spouse.Name} on their new baby: {newborn.Name}.")); // C#6
             }
 
             // people got married
@@ -168,7 +174,7 @@ namespace PopulationSimulation
             var deaths = deadPeople.Count;
             People = People.Where(p => p.IsAlive).ToList();
             Report.Add(
-                0,
+                month,
                 new ReportEntryBuilder().AddMonth(month)
                                         .AddManCount(GetCountByGenderType(GenderType.Male))
                                         .AddWomanCount(GetCountByGenderType(GenderType.Female))
