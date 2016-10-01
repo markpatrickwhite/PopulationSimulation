@@ -40,7 +40,7 @@ namespace PopulationSimulation
         private static void InitializeComponents()
         {
             _randomNumber = new Random();
-            _people = new List<Person>();
+            //_people = new List<Person>();
             _report = new Dictionary<int, IReportEntry>();
             _logs = new List<Log>();
             _fw = new StreamWriter(ReportFilename, false);
